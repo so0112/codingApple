@@ -1,0 +1,8 @@
+.black-nav {
+  background: black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 20px;
+}
