@@ -1,10 +1,10 @@
 import "./App.css";
-import { Button, Navbar, Container, Nav, Row, Col } from "react-bootstrap";
+import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import shopData from "./data/shopData.json";
+import shopDatas from "./data/shopDatas.json";
+import ShopItem from "./components/ShopItem";
 
 function App() {
-  console.log(shopData);
   return (
     <div className="App">
       <Navbar bg="light" variant="light">
@@ -19,21 +19,11 @@ function App() {
       <div className="main-bg"></div>
       <Container>
         <Row>
-          <Col sm>
-            <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" alt="상품1" />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col sm>
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="80%" alt="상품1" />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col sm>
-            <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="80%" alt="상품1" />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
+          {shopDatas.map((itemProps) => (
+            <Col sm key={itemProps.id}>
+              <ShopItem itemProps={itemProps} />
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>
