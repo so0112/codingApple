@@ -1,3 +1,9 @@
+.main-bg {
+  height: 300px;
+  background-image: url("https://png.pngtree.com/thumb_back/fh260/back_pic/00/02/44/5056179b42b174f.jpg");
+  background-size: cover;
+  background-position: center;
+}
 .App {
   text-align: center;
 }
