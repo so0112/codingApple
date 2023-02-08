@@ -3,28 +3,50 @@ import "./App.css";
 
 function App() {
   let logo = "ReactBlog";
-  let [title, setTtitle] = useState(["남자코트 추천", "강남 우동맛집", "파이썬독학"]);
-
-  let [like, setlike] = useState(0);
+  let [blogObject, setBlogObject] = useState([
+    { title: "남자코트 추천", date: "2월 3일", like: 0 },
+    { title: "강남우동 맛집", date: "1월 1일", like: 0 },
+    { title: "파이썬 독학", date: "12월 2일", like: 0 },
+  ]);
 
   let [modal, setModal] = useState(false);
+  let [currentNumber, setCurrentNumber] = useState();
 
-  const onLike = () => {
-    setlike(like + 1);
+  let [input, setInput] = useState();
+
+  const onLikeButton = (index) => {
+    let newArray = [...blogObject];
+    newArray[index].like++;
+    setBlogObject(newArray);
   };
 
-  const changeTitle1 = () => {
-    // 원본 데이터를 수정하는 것보다는 복사본 수정이 올바른 방법
-    // 나중에 원본 데이터가 필요할 때도 있기 때문
-    let copy = [...title];
-    copy[0] = "여자코트 추천";
-    setTtitle(copy);
+  const onChangeModal = (index) => {
+    if (index === currentNumber) {
+      setModal(!modal);
+    } else {
+      setModal(true);
+    }
   };
 
-  const sortTitle = () => {
-    let copy = [...title];
-    copy.sort();
-    setTtitle(copy);
+  const onChangeModalNumber = (index) => {
+    setCurrentNumber(index);
+  };
+
+  const postBlog = () => {
+    let copyArray = [...blogObject];
+    copyArray.unshift({ title: input, date: "2월 1일", like: 0 });
+    deleteInput();
+    setBlogObject(copyArray);
+  };
+
+  const deleteInput = () => {
+    setInput("");
+  };
+
+  const deleteBlog = (index) => {
+    let copyArray = [...blogObject];
+    copyArray.splice(index, 1);
+    setBlogObject(copyArray);
   };
 
   return (
@@ -32,36 +54,42 @@ function App() {
       <div className="black-nav">
         <h4>{logo}</h4>
       </div>
-
-      <button onClick={sortTitle}>가나다순 정렬</button>
-      <div className="list">
-        <h4 onClick={changeTitle1}>
-          {title[0]} <span onClick={onLike}>👍🏻</span> {like}
-        </h4>
-        <p>2월 1일 발행</p>
-      </div>
-      <hr />
-      <div className="list">
-        <h4>{title[1]}</h4>
-        <p>2월 1일 발행</p>
-      </div>
-      <hr />
-      <div className="list">
-        <h4 onClick={() => setModal(!modal)}>{title[2]}</h4>
-        <p>2월 1일 발행</p>
-      </div>
-      <hr />
-      {modal && <Modal />}
+      {blogObject.map((el, index) => (
+        <>
+          <div className="list">
+            <h4 onClick={() => (onChangeModalNumber(index), onChangeModal(index))}>{el.title}</h4>
+            <span onClick={() => onLikeButton(index)}>👍🏻{el.like}</span>
+            <p>2월 1일 발행</p>
+          </div>
+          <button onClick={() => deleteBlog(index)}>해당글 삭제하기</button>
+          <hr />
+        </>
+      ))}
+      <input
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+      />
+      <button onClick={postBlog}>게시글 작성</button>
+      {modal && <Modal setBlogObject={setBlogObject} blogObject={blogObject} currentModalNumber={currentNumber} />}
     </div>
   );
 }
 
-function Modal() {
+function Modal({ blogObject, currentModalNumber, setBlogObject }) {
   return (
     <div className="modal">
-      <h4>제목</h4>
-      <p>제목</p>
-      <p>제목</p>
+      <h4>{blogObject[currentModalNumber].title}</h4>
+      <p>{blogObject[currentModalNumber].date}</p>
+      <p>상세내용</p>
+      <button
+        onClick={() => {
+          let copy = [...blogObject];
+          copy[currentModalNumber].title = "수정된 제목";
+          setBlogObject(copy);
+        }}>
+        글수정
+      </button>
     </div>
   );
 }
