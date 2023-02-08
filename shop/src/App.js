@@ -1,32 +1,13 @@
-import "./App.css";
-import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import shopDatas from "./data/shopDatas.json";
-import ShopItem from "./components/ShopItem";
+import { Routes, Route, Link } from "react-router-dom";
+import MainPage from "./pages/MainPage";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand href="#home">Shop</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Cart</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-      <div className="main-bg"></div>
-      <Container>
-        <Row>
-          {shopDatas.map((itemProps) => (
-            <Col sm key={itemProps.id}>
-              <ShopItem itemProps={itemProps} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </div>
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/detail" element={<div>상세페이지임</div>} />
+      <Route path="/about" element={<div>어바웃페이지임</div>} />
+    </Routes>
   );
 }
 
