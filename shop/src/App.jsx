@@ -1,24 +1,24 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, useNavigate, Outlet, useParams } from "react-router-dom";
+import Navigationbar from "./components/Navigationbar";
 import DetailPage from "./pages/DetailPage";
+import EventPage from "./pages/EventPage";
 import MainPage from "./pages/MainPage";
 
 function App() {
+  // 페이지 이동용 hook
+
   return (
     <>
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand href="">Shop</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="">Home</Nav.Link>
-            <Nav.Link href="detail">Detail</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      <Navigationbar />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/about" element={<div>어바웃페이지임</div>} />
+        <Route path="/event" element={<EventPage />}>
+          <Route path="one" element={<div>첫번째 이벤트 페이지</div>} />
+          <Route path="two" element={<div>두번째 이벤트 페이지</div>} />
+        </Route>
+        <Route path="*" element={<div>404</div>} />
       </Routes>
     </>
   );
