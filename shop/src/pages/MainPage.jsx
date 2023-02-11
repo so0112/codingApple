@@ -4,11 +4,11 @@ import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import shopDatas from "../data/shopDatas.json";
 import ShopItem from "../components/ShopItem";
-import axios from "axios";
+// import axios from "axios";
 
 const MainPage = () => {
   const [shopDatasState, setShopDatasState] = useState([...shopDatas]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   //TODO: 함수 관심사 분리하기
   const onSortShopItme = () => {
@@ -26,18 +26,18 @@ const MainPage = () => {
     console.log(copyShopDatasState);
   };
 
-  const plusShopItem = () => {
-    console.log(isLoading);
-    setIsLoading(true);
-    setTimeout(() => {
-      axios.get("https://codingapple1.github.io/shop/data3.json").then((res) => {
-        console.log(res.data);
-        setShopDatasState([...shopDatasState, ...res.data]);
-        setIsLoading(false);
-      });
-    }, 5000);
-    console.log(isLoading);
-  };
+  // const plusShopItem = () => {
+  //   console.log(isLoading);
+  //   setIsLoading(true);
+  //   setTimeout(() => {
+  //     axios.get("https://codingapple1.github.io/shop/data3.json").then((res) => {
+  //       console.log(res.data);
+  //       setShopDatasState([...shopDatasState, ...res.data]);
+  //       setIsLoading(false);
+  //     });
+  //   }, 5000);
+  //   console.log(isLoading);
+  // };
 
   return (
     <div className="App">
@@ -52,8 +52,7 @@ const MainPage = () => {
           ))}
         </Row>
       </Container>
-      <button onClick={plusShopItem}>axios 추가 버튼</button>
-      {isLoading && <div>로딩중asdasdasdasd</div>}
+      {/* <button>axios 추가 버튼</button> */}
     </div>
   );
 };
