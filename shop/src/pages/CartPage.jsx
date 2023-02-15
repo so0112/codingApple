@@ -1,7 +1,12 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const CartPage = () => {
+  let a = useSelector((state) => {
+    return state.shoes;
+  });
+  console.log(a);
   return (
     <div>
       <Table>
@@ -14,14 +19,22 @@ const CartPage = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {a.map((shoes, index) => (
+            <tr>
+              <td>{shoes.id}</td>
+              <td>{shoes.name}</td>
+              <td>{shoes.count}</td>
+              <td>수량 변경</td>
+            </tr>
+          ))}
+          {/* <tr>
             <td>1</td>
             <td>안녕</td>
             <td>안녕</td>
             <td>안녕</td>
-          </tr>
+          </tr> */}
         </tbody>
-      </Table>{" "}
+      </Table>
     </div>
   );
 };
