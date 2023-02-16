@@ -12,7 +12,6 @@ const DetailPage = () => {
   // useEffect 에 있는   return 문이 제일 먼저 실행된다.
   useEffect(() => {
     if (isNaN(inputText) !== true) {
-      console.log(inputText);
       setAlertCaution(false);
     } else {
       setAlertCaution(true);
@@ -21,7 +20,6 @@ const DetailPage = () => {
 
   const chageInputText = (e) => {
     setInputText(e.target.value);
-    console.log(inputText);
   };
 
   return (
