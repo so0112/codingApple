@@ -7,10 +7,9 @@ const Navigationbar = () => {
   return (
     <Navbar bg="light" variant="light">
       <Container>
-        <Navbar.Brand href="">Shop</Navbar.Brand>
+        <Navbar.Brand href="/">Shop</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
-          <Nav.Link onClick={() => navigate("/detail")}>Detail</Nav.Link>
           <Nav.Link onClick={() => navigate("/cart")}>Cart</Nav.Link>
         </Nav>
       </Container>
