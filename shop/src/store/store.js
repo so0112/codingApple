@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import testNum from "./testSlice";
 import shoes from "./shoesSlice";
 
-// configureStore 리듀서에 등록해줘야 사용가능
 export default configureStore({
   reducer: {
+    testNum: testNum.reducer,
     shoes: shoes.reducer,
   },
 });

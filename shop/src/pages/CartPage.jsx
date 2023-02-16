@@ -1,14 +1,23 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addCount, minusCount } from "../store/shoesSlice";
+import { addNum, minusNum } from "../store/testSlice";
 
 const CartPage = () => {
-  let a = useSelector((state) => {
-    return state.shoes;
-  });
-  console.log(a);
+  let test = useSelector((state) => state.testNum);
+  let shoes = useSelector((state) => state.shoes);
+  let dispatch = useDispatch();
+
+  const findShoesIndex = (id) => {
+    return shoes.findIndex((shoe) => shoe.id === id);
+  };
+
   return (
     <div>
+      <h1>test {test.num}</h1>
+      <button onClick={() => dispatch(addNum())}>+</button>
+      <button onClick={() => dispatch(minusNum())}>-</button>
       <Table>
         <thead>
           <tr>
@@ -19,20 +28,29 @@ const CartPage = () => {
           </tr>
         </thead>
         <tbody>
-          {a.map((shoes, index) => (
-            <tr>
+          {shoes.map((shoes, index) => (
+            <tr key={shoes.id}>
               <td>{shoes.id}</td>
               <td>{shoes.name}</td>
               <td>{shoes.count}</td>
-              <td>수량 변경</td>
+              <td>
+                <button
+                  onClick={() => {
+                    const index = findShoesIndex(shoes.id);
+                    dispatch(addCount(index));
+                  }}>
+                  +
+                </button>
+                <button
+                  onClick={() => {
+                    const index = findShoesIndex(shoes.id);
+                    dispatch(minusCount(index));
+                  }}>
+                  -
+                </button>
+              </td>
             </tr>
           ))}
-          {/* <tr>
-            <td>1</td>
-            <td>안녕</td>
-            <td>안녕</td>
-            <td>안녕</td>
-          </tr> */}
         </tbody>
       </Table>
     </div>
