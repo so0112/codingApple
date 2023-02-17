@@ -9,15 +9,8 @@ const CartPage = () => {
   let shoes = useSelector((state) => state.shoes);
   let dispatch = useDispatch();
 
-  const findShoesIndex = (id) => {
-    return shoes.findIndex((shoe) => shoe.id === id);
-  };
-
   return (
     <div>
-      <h1>test {test.num}</h1>
-      <button onClick={() => dispatch(addNum())}>+</button>
-      <button onClick={() => dispatch(minusNum())}>-</button>
       <Table>
         <thead>
           <tr>
@@ -36,15 +29,13 @@ const CartPage = () => {
               <td>
                 <button
                   onClick={() => {
-                    const index = findShoesIndex(shoes.id);
-                    dispatch(addCount(index));
+                    dispatch(addCount(shoes.id));
                   }}>
                   +
                 </button>
                 <button
                   onClick={() => {
-                    const index = findShoesIndex(shoes.id);
-                    dispatch(minusCount(index));
+                    dispatch(minusCount(shoes.id));
                   }}>
                   -
                 </button>
