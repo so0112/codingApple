@@ -11,9 +11,6 @@ const CartPage = () => {
 
   return (
     <div>
-      <h1>test {test.num}</h1>
-      <button onClick={() => dispatch(addNum())}>+</button>
-      <button onClick={() => dispatch(minusNum())}>-</button>
       <Table>
         <thead>
           <tr>

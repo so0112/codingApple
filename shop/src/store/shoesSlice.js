@@ -15,8 +15,16 @@ let shoes = createSlice({
       const findIndex = state.findIndex((item) => item.id === action.payload);
       state[findIndex].count -= 1;
     },
+    addItem: (state, action) => {
+      const findIndex = state.findIndex((item) => item.id === action.payload.id);
+      if (findIndex === -1) {
+        state.push(action.payload);
+      } else {
+        state[findIndex].count += 1;
+      }
+    },
   },
 });
 
-export const { addCount, minusCount } = shoes.actions;
+export const { addCount, minusCount, addItem } = shoes.actions;
 export default shoes;

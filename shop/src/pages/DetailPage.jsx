@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import shopDatas from "../data/shopDatas.json";
+import { addItem } from "../store/shoesSlice";
 
 const DetailPage = () => {
   const { id } = useParams();
   // const [saleVisible, setSaleVisible] = useState(true);
   const [alertCaution, setAlertCaution] = useState(false);
   const [inputText, setInputText] = useState("");
+  const dispatch = useDispatch();
 
   // useEffect 에 있는   return 문이 제일 먼저 실행된다.
   useEffect(() => {
@@ -17,10 +20,6 @@ const DetailPage = () => {
       setAlertCaution(true);
     }
   }, [inputText]);
-
-  const chageInputText = (e) => {
-    setInputText(e.target.value);
-  };
 
   return (
     <>
@@ -34,9 +33,12 @@ const DetailPage = () => {
             <p>{shopDatas[id].content}</p>
             <p>{shopDatas[id].price} 원</p>
             <button className="btn btn-danger">주문하기</button>
+            <button
+              className="btn btn-danger"
+              onClick={() => dispatch(addItem({ id: Number(id), name: shopDatas[id].title, count: 1 }))}>
+              장바구니 추가
+            </button>
           </div>
-          <input onChange={chageInputText}></input>
-          <S.InutAlertCaution alertCaution={alertCaution}>숫자만 입력하세요 텍스트 ㄴㄴ</S.InutAlertCaution>
         </div>
       </div>
     </>
