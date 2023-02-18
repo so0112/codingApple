@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route, useNavigate, Outlet, useParams } from "react-router-dom";
 import Navigationbar from "./components/Navigationbar";
 import CartPage from "./pages/CartPage";
@@ -6,7 +7,9 @@ import EventPage from "./pages/EventPage";
 import MainPage from "./pages/MainPage";
 
 function App() {
-  // 페이지 이동용 hook
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify([]));
+  }, []);
 
   return (
     <>
