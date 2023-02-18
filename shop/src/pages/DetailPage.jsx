@@ -7,19 +7,12 @@ import { addItem } from "../store/shoesSlice";
 
 const DetailPage = () => {
   const { id } = useParams();
-  // const [saleVisible, setSaleVisible] = useState(true);
-  const [alertCaution, setAlertCaution] = useState(false);
-  const [inputText, setInputText] = useState("");
   const dispatch = useDispatch();
 
-  // useEffect 에 있는   return 문이 제일 먼저 실행된다.
   useEffect(() => {
-    if (isNaN(inputText) !== true) {
-      setAlertCaution(false);
-    } else {
-      setAlertCaution(true);
-    }
-  }, [inputText]);
+    console.log("🚀 ~ file: DetailPage.jsx:14 ~ useEffect ~ id", id);
+    localStorage.setItem("watched", JSON.stringify([...JSON.parse(localStorage.getItem("watched")), Number(id)]));
+  }, []);
 
   return (
     <>
