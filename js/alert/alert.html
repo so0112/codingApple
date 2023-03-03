@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="alert.css"></link>
+  </head>
+  <body>
+    <h1 id="hello">안녕하세요</h1>
+
+    <div id="alert-box">얼럿창<button id="close-alert">닫기</button></div>
+    <button id="alert-btn">열어보기</button>
+  </body>
+
+  <script>
+    document.getElementById("hello").innerHTML = "Hello World";
+
+    // 변경할 요소, 컨트롤 버튼 선언
+    let alertBox = document.getElementById("alert-box");
+    let alertBtn = document.getElementById("alert-btn");
+    let closeAlert = document.getElementById("close-alert");
+
+    alertBtn.addEventListener("click", () => {alertBox.style.display="block"})
+    closeAlert.addEventListener("click", () => {alertBox.style.display="none"})
+  </script>
+</html>
