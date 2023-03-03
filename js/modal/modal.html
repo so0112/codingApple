@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="modal.css"></link>
+  </head>
+  <body>
+
+    <div class="black-bg">
+
+      <div class="login-modal">
+        <h4>로그인하세요</h4><button class="login-modal__closeBtn">닫기</button>
+      </div>
+      
+    </div>
+    <button class="loginBtn">로그인</button>
+    
+  </body>
+
+  <script>
+    let loginBtn = document.querySelector(".loginBtn");
+    let loginModal = document.querySelector(".login-modal");
+    let blackBg = document.querySelector(".black-bg");
+    let loginModalCloseBtn = document.querySelector(".login-modal__closeBtn");
+
+    loginBtn.addEventListener("click", () => {
+      loginModal.style.display = "block";
+      blackBg.classList.add("show-modal")
+    })
+
+    loginModalCloseBtn.addEventListener("click", () => {
+      loginModal.style.display = "none";
+      blackBg.classList.remove("show-modal")
+    })
+  </script>
+</html>
