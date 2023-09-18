@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    background-color: black;
+}
+
+.left-menu {
+    width: 20%;
+    height: 400px;
+    background-color: aqua;
+}
+
+.right-content {
+    width: 80%;
+    height: 400px;
+    background-color: beige;
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background-color: blue;
+}
