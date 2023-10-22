@@ -21,6 +21,10 @@
   height: 20%;
 }
 
+.content-container {
+  height: 80%;
+}
+
 .profile-img {
   display: flex;
   align-items: center;
@@ -61,7 +65,6 @@
 .btn-container {
   display: flex;
   justify-content: flex-end;
-  height: 20%;
 }
 
 .right-container {
