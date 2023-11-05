@@ -1,0 +1,13 @@
+.alert-container {
+  display: flex;
+}
+
+.alert-box {
+  height: 100px;
+  width: 100%;
+  border-radius: 5px;
+
+  padding: 0 10px;
+  background-color: skyblue;
+  align-items: center;
+}
