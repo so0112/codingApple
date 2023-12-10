@@ -16,26 +16,29 @@ const complexVar = [
 
 const mapReturn = complexVar.map((item) => {
   if (item.parentA === 4) {
-    item.parentB.childrenB = 4;
-  }
-  return item;
-});
-
-console.log('mapReturn :', mapReturn);
-
-state.gridData[1].columnDefs = defaultColumnDefs[pageID].map((item) => {
-  if (item['headerName'] === '협력업체') {
-    const temp = item['children'].map((el) => {
-      return {
-        ...el,
-        readOnly: true,
-      };
-    });
     return {
       ...item,
-      children: temp,
     };
   } else {
     return item;
   }
 });
+
+console.log('mapReturn :', mapReturn);
+
+// state.gridData[1].columnDefs = defaultColumnDefs[pageID].map((item) => {
+//   if (item['headerName'] === '협력업체') {
+//     const temp = item['children'].map((el) => {
+//       return {
+//         ...el,
+//         readOnly: true,
+//       };
+//     });
+//     return {
+//       ...item,
+//       children: temp,
+//     };
+//   } else {
+//     return item;
+//   }
+// });
