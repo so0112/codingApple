@@ -1,8 +1,8 @@
 // promise 정리용 문서
-const loop = ({ message }) => {
+const loop = ({ message, loopNum }) => {
   console.time(message);
   let num = 0;
-  for (let i = 0; i <= 2000000000; i++) {
+  for (let i = 0; i <= loopNum; i++) {
     num += i;
   }
   console.timeEnd(message);
