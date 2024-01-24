@@ -1,5 +1,18 @@
 // 스크립트 코드를 작성
 
+// 변수자리
+let clickNum = 0;
+
+// 로그인 버튼 클릭 횟수 감지
+document.getElementById('loginButton').addEventListener('click', () => {
+  clickNum += 1;
+  console.log(clickNum);
+
+  if (clickNum >= 10) {
+    alert('클릭 ㄴㄴ');
+  }
+});
+
 // 모달 열기
 document.getElementById('loginButton').addEventListener('click', function () {
   document.getElementById('loginModal').style.display = 'block';
